@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer Seite</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timer</title>
 </head>
 <body>
-    
+<h1>Timer</h1>
+<hr>
+<label for="timerInput">Bitte Timerlänge eingeben</label>
+<input type="number" id="timerInput">
+<button onclick="startTimer()">Timer starten</button>
+<div id="timerDisplay"></div>
+
+<script>
+function startTimer() {
+    const timerInput = document.getElementById('timerInput');
+    const countdownDuration = parseInt(timerInput.value);
+
+    if (isNaN(countdownDuration) || countdownDuration <= 0) {
+        timerDisplay.textContent = "Sie müssen eine Zahl eingeben";
+        return;
+    }
+
+    for (let i = countdownDuration; i >= 0; i--) {
+        setTimeout(() => {
+            console.log(i); 
+            timerDisplay.textContent = i + " sekunden"; 
+            if (i === 0) {
+                
+                timerDisplay.textContent = "Timer abgeschlossen!"; 
+            }
+        }, (countdownDuration - i) * 1000); 
+    }
+}
+</script>
+
 </body>
 </html>
