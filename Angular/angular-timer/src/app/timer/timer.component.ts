@@ -1,35 +1,30 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
-  template: `
-    <h1>Timer</h1>
-    <hr>
-    <label for="timerInput">Bitte Timerlänge eingeben</label>
-    <input type="number" id="timerInput" [(ngModel)]="countdownDuration">
-    <button (click)="startTimer()">Timer starten</button>
-    <div id="timerDisplay">{{ timerDisplay }}</div>
-  `,
-  styles: []
+  standalone: true,
+  imports: [NgIf],
+  templateUrl: './timer.component.html',
+  styleUrl: './timer.component.css'
 })
 export class TimerComponent {
-  countdownDuration: number = 0;
-  timerDisplay: string = '';
+  time: number = 0
+  onChange(event: Event) {
+    this.time = parseInt((event.target as HTMLInputElement).value)
+  }
 
-  startTimer() {
-    if (isNaN(this.countdownDuration) || this.countdownDuration <= 0) {
-      this.timerDisplay = "Sie müssen eine Zahl eingeben";
-      return;
-    }
 
-    for (let i = this.countdownDuration; i >= 0; i--) {
-      setTimeout(() => {
-        console.log(i);
-        this.timerDisplay = i + " Sekunden";
-        if (i === 0) {
-          this.timerDisplay = "Timer abgeschlossen!";
-        }
-      }, (this.countdownDuration - i) * 1000);
+    startTimer() {
+      
+      for (let i = this.time; i >= 0; i--) {
+        setTimeout(() => {
+            this.time; 
+            
+            if (i === 0) {
+              this.time; 
+            }
+        }, (this.time - i) * 1000);
     }
   }
 }
