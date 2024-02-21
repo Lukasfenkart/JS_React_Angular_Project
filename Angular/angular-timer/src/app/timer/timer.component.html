@@ -1,6 +1,6 @@
 
 <h1>Timer</h1>
-<input type="number" id="timerInput"(change)="onChange($event)">
-<button onclick="startTimer()">Timer starten</button>
+<input type="number" id="timerInput" (change)="onChange($event)">
+<button (click)="startTimer()">Timer starten</button>
 <div *ngIf="time === 0">Bitte Zahl eingeben</div>
 <p>{{time}}</p>

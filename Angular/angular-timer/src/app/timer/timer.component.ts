@@ -16,15 +16,13 @@ export class TimerComponent {
 
 
     startTimer() {
-      
-      for (let i = this.time; i >= 0; i--) {
-        setTimeout(() => {
-            this.time; 
-            
-            if (i === 0) {
-              this.time; 
-            }
-        }, (this.time - i) * 1000);
-    }
+    let interval = setInterval(() => {
+      this.time -= 1;
+      if (this.time <= 0) {
+        clearInterval(interval)
+        this.time = 0;
+      }
+    }, 1000)  
+    
   }
 }
